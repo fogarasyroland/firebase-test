@@ -2,5 +2,5 @@
   <h1 ng-click="sayHello()" ng-keydown="alert('s')">Halihó rapid chat!</h1>
   <input ng-model="messageInp" ng-keypress="typing($event)">
   <ul>
-    <li ng-repeat="message in messages">{{message.uid | limitTo : -3}}: {{message.text}}</li>
+    <li ng-repeat="message in messages | orderBy: '$id':true">{{message.uid | limitTo : -3}}: {{message.text}}</li>
 </div>

@@ -52,7 +52,28 @@ angular.module('firebaseTestApp')
 
     $scope.messages = $firebaseArray(ref);
 
+    $scope.unseenMsg = 0;
+
+
+      function onFocus() {
+        console.log(123);
+        $scope.unseenMsg = 0;
+        document.getElementsByTagName('title')[0].innerHTML = "Rapidchat"
+      }
+      window.onfocus = onFocus;
+
+
+
+
     //syncObject.$bindTo($scope, "data");
+
+    ref.on('value', function(dataSnapshot) {
+      $scope.unseenMsg++;
+      if ($scope.unseenMsg <= 0)
+        document.getElementsByTagName('title')[0].innerHTML = "Rapidchat";
+      else
+        document.getElementsByTagName('title')[0].innerHTML = "(" + ($scope.unseenMsg) + ") Rapidchat";
+    });
 
     $scope.sayHello = function(){
       console.log($scope.messages);
