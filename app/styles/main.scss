@@ -10,6 +10,26 @@
 
 body {
   padding: 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+}
+
+table, td, tr {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 3px 0;
+}
+
+input {
+  padding: 3px;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+  margin-bottom: 16px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */

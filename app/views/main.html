@@ -1,6 +1,14 @@
-<div class="jumbotron">
+<div class="jumbotron"  >
   <h1 ng-click="sayHello()" ng-keydown="alert('s')">Halihó rapid chat!</h1>
   <input ng-model="messageInp" ng-keypress="typing($event)">
-  <ul>
-    <li ng-repeat="message in messages.slice().reverse()">{{message.uid | limitTo : -3}} <b>{{message.time | date:'yy/MM/dd HH:mm'}}</b>: {{message.text}}</li>
+  <table>
+    <tr ng-repeat="message in messages.slice().reverse()">
+      <td style="text-align: right;">
+        <span style="background-color:{{message.uid | limitTo : -3 | colorize}}; color: #fff; padding: 2px; border-radius: 6px 0 0 6px"> {{message.uid | limitTo : -3}} <b>{{message.time | date:'HH:mm'}}</b>:</span>
+      </td>
+      <td>
+        <span style="background-color:{{message.uid | limitTo : -3 | colorize}}; color: #fff; padding: 2px; border-radius: 0 6px 6px 0">{{message.text}}</span>
+      </td>
+    </tr>
+  </table>
 </div>
