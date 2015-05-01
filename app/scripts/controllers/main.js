@@ -40,9 +40,12 @@ angular.module('firebaseTestApp')
 
     $scope.typing = function(e){
       if (e.which == 13){
+        var ccc = null;
+        if ($scope.color) ccc = $scope.color;
         $scope.messages.$add({
           uid: $scope.uid,
           text: $scope.messageInp,
+          color: ccc,
           time: Firebase.ServerValue.TIMESTAMP
         });
         $scope.messageInp = "";
