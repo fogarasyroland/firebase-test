@@ -78,6 +78,7 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/firebase/firebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.js"></script>
+    <script src="bower_components/soundmanager/script/soundmanager2.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -87,18 +88,18 @@
         <script src="scripts/controllers/about.js"></script>
         <!-- endbuild -->
 
-        <script src="bower_components/soundmanager/script/soundmanager2.js"></script>
         <script>
           var mySound ;
+          if (soundManager)
           soundManager.setup({
             //url: '/path/to/swf-files/',
             //flashVersion: 9, // optional: shiny features (default = 8)
             // optional: ignore Flash where possible, use 100% HTML5 mode
             // preferFlash: false,
             onready: function() {
-              var mySound = soundManager.createSound({
+              mySound = soundManager.createSound({
                 id: 'mySound',
-                url: '/sound/notify.mp3',
+                url: 'sound/notify.mp3',
                 autoLoad: true,
                 autoPlay: false,
                 onload: function() {
