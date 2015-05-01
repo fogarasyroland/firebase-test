@@ -42,7 +42,8 @@ angular.module('firebaseTestApp')
       if (e.which == 13){
         $scope.messages.$add({
           uid: $scope.uid,
-          text: $scope.messageInp
+          text: $scope.messageInp,
+          time: Firebase.ServerValue.TIMESTAMP
         });
         $scope.messageInp = "";
       }
@@ -53,22 +54,26 @@ angular.module('firebaseTestApp')
     $scope.messages = $firebaseArray(ref);
 
     $scope.unseenMsg = 0;
-
+    $scope.isFocus = true;
 
       function onFocus() {
         console.log(123);
         $scope.unseenMsg = 0;
         document.getElementsByTagName('title')[0].innerHTML = "Rapidchat"
+        $scope.isFocus = true;
       }
       window.onfocus = onFocus;
 
+      window.onblur = function(){
+        $scope.isFocus = false;
+      };
 
 
 
     //syncObject.$bindTo($scope, "data");
 
     ref.on('value', function(dataSnapshot) {
-      $scope.unseenMsg++;
+      if (!$scope.isFocus) $scope.unseenMsg++;
       if ($scope.unseenMsg <= 0)
         document.getElementsByTagName('title')[0].innerHTML = "Rapidchat";
       else
