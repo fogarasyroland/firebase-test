@@ -76,7 +76,10 @@ angular.module('firebaseTestApp')
     //syncObject.$bindTo($scope, "data");
 
     ref.on('value', function(dataSnapshot) {
-      if (!$scope.isFocus) $scope.unseenMsg++;
+      if (!$scope.isFocus){
+        $scope.unseenMsg++;
+        mySound.play();
+      }
       if ($scope.unseenMsg <= 0)
         document.getElementsByTagName('title')[0].innerHTML = "Rapidchat";
       else

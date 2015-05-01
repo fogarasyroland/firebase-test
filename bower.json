@@ -10,7 +10,8 @@
     "angular-sanitize": "^1.3.0",
     "angular-touch": "^1.3.0",
     "firebase": "~2.2.4",
-    "angularfire": "~1.0.0"
+    "angularfire": "~1.0.0",
+    "soundmanager": "*"
   },
   "devDependencies": {
     "angular-mocks": "^1.3.0"
