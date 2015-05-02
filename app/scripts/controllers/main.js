@@ -10,19 +10,34 @@
 angular.module('firebaseTestApp')
   .controller('MainCtrl', function ($scope, $firebaseArray) {
 
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
 
     var ref = new Firebase("https://glaring-inferno-8842.firebaseio.com/");
+
+
+
 
 
     function authDataCallback(authData) {
       if (authData) {
         $scope.uid = authData.uid;
         console.log("User " + authData.uid + " is logged in with " + authData.provider);
+
+/*
+
+        var amOnline = new Firebase('https://glaring-inferno-8842.firebaseio.com/.info/connected');
+        var userRef = new Firebase('https://glaring-inferno-8842.firebaseio.com/presence/' + $scope.uid);
+        var prese = new Firebase('https://glaring-inferno-8842.firebaseio.com/presence/');
+
+        amOnline.on('value', function(snapshot) {
+          if (snapshot.val()) {
+            userRef.onDisconnect().remove();
+            userRef.set(true);
+          }
+        });
+
+        prese.on('value', function(snapshot) {
+          console.log(snapshot);
+        });*/
       } else {
         console.log("User is logged out");
         ref.authAnonymously(function(error, authData) {
@@ -34,6 +49,8 @@ angular.module('firebaseTestApp')
         },{remember: "sessionOnly"})
       }
     }
+
+
 
     ref.onAuth(authDataCallback);
 

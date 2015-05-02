@@ -24,6 +24,18 @@ module.exports = function (grunt) {
   // Define the configuration for all the tasks
   grunt.initConfig({
 
+    ftpsync: {
+      //local: '/home/scrag/Asztal/rapidchat/firebase-test/dist',
+      local: 'dist/',
+      remote: '/public_html/chat',
+      host: "codeby.fr",
+      port: 21,
+      user: "",
+      pass: "",
+      connections: 1,
+      ignore: []
+    },
+
     // Project settings
     yeoman: appConfig,
 
@@ -462,7 +474,8 @@ module.exports = function (grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'ftpsync'
   ]);
 
   grunt.registerTask('default', [

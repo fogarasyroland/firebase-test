@@ -5,10 +5,10 @@
   <table>
     <tr ng-repeat="message in messages.slice().reverse()">
       <td style="text-align: right;">
-        <span style="background-color:{{(message.color != null) ? message.color : (message.uid | limitTo : -3 | colorize)}}; color: #fff; padding: 2px; border-radius: 6px 0 0 6px"> {{message.uid | limitTo : -3}} <b>{{message.time | date:'HH:mm'}}</b>:</span>
+        <span class="bubble" style="background-color:{{(message.color != null) ? message.color : (message.uid | limitTo : -3 | colorize)}}; border-radius: 6px 0 0 6px"> {{message.uid | limitTo : -3}} <b>{{message.time | date:'HH:mm'}}</b>:</span>
       </td>
       <td>
-        <span style="background-color:{{(message.color != null) ? message.color : (message.uid | limitTo : -3 | colorize)}}; color: #fff; padding: 2px; border-radius: 0 6px 6px 0">{{message.text}}</span>
+        <span ng-bind-html="message.text" class="bubble" style="background-color:{{(message.color != null) ? message.color : (message.uid | limitTo : -3 | colorize)}}; border-radius: 0 6px 6px 0"></span>
       </td>
     </tr>
   </table>

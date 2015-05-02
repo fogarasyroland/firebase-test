@@ -8,6 +8,8 @@
  *
  * Main module of the application.
  */
+
+ 
 angular
   .module('firebaseTestApp', [
     'ngAnimate',
@@ -36,7 +38,7 @@ angular
     };
   })
   .config(function ($routeProvider,$sceProvider) {
-    $sceProvider.enabled(false);
+    //$sceProvider.enabled(false);
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
